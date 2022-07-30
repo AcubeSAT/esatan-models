@@ -25,39 +25,40 @@ Coming soon :tm:!
 
 #### COMMS PCB
 
-[![Cold case with passive control](plots/comms-pcb/cold-with-passive-control.png "Cold with passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/comms-pcb/cold-with-passive-control.png]
+![Cold case with passive control](plots/comms-pcb/cold-with-passive-control.png "Cold with passive control")
 
 ---
 
-[![Cold case without passive control](plots/comms-pcb/cold-without-passive-control.png "Cold without passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/comms-pcb/cold-without-passive-control.png]
+![Cold case without passive control](plots/comms-pcb/cold-without-passive-control.png "Cold without passive control")
 
 ---
 
-[![Hot case with passive control](plots/comms-pcb/hot-with-passive-control.png "Hot with passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/comms-pcb/hot-with-passive-control.png]
+![Hot case with passive control](plots/comms-pcb/hot-with-passive-control.png "Hot with passive control")
 
 ---
 
-[![Hot case without passive control](plots/comms-pcb/hot-without-passive-control.png "Hot without passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/comms-pcb/hot-without-passive-control.png]
+![Hot case without passive control](plots/comms-pcb/hot-without-passive-control.png "Hot without passive control")
 
 #### General
 
-[![Cold case with passive control](plots/general/cold-with-passive-control.png "Cold with passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/general/cold-with-passive-control.png]
+![Cold case with passive control](plots/general/cold-with-passive-control.png "Cold with passive control")
 
 ---
 
-[![Cold case without passive control](plots/general/cold-without-passive-control.png "Cold without passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/general/cold-without-passive-control.png]
+![Cold case without passive control](plots/general/cold-without-passive-control.png "Cold without passive control")
 
 ---
 
-[![Hot case with passive control](plots/general/hot-with-passive-control.png "Hot with passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/general/hot-with-passive-control.png]
+![Hot case with passive control](plots/general/hot-with-passive-control.png "Hot with passive control")
 
 ---
 
-[![Hot case without passive control](plots/general/hot-without-passive-control.png "Hot without passive control")][https://gitlab.com/acubesat/thermal/esatan-model/-/blob/master/cdr/plots/general/hot-without-passive-control.png]
+![Hot case without passive control](plots/general/hot-without-passive-control.png "Hot without passive control")
 
 ## Model
 
 The model files reside inside the `model/` directory. The files are:
+
 - `cdr.ere`: Thermal cases
 - `cdr.erg`: Model geometry
 - `cdr.erk`: Radiative cases
