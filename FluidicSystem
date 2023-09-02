@@ -1,0 +1,921 @@
+/* Start of independent variable block */
+
+/* --- 
+ --- */
+
+/* End of independent variable block - no errors */
+
+/* Start of geometry vectors and matrices declaration block */
+
+/* End of geometry vectors and matrices declaration block - no errors */
+
+/* Start of bound variable block */
+
+BULK PTFE_bulk;
+DEFINE_BULK (
+    bulk = PTFE_bulk,
+    density = 2200.0,
+    sp_heat = 1470.0,
+    type = "Isotropic",
+    cond = 0.167);
+
+BULK FEP_bulk;
+DEFINE_BULK (
+    bulk = FEP_bulk,
+    density = 2210.0,
+    sp_heat = 1004.4,
+    type = "Isotropic",
+    cond = 0.2);
+
+OPTICAL PTFE_opt;
+DEFINE_OPTICAL (
+    optical = PTFE_opt,
+    ir_emiss = 0.92,
+    ir_transm = 0.0,
+    solar_absorb = 0.95,
+    solar_transm = 0.0,
+    ir_spec_refl = 0.0,
+    solar_spec_refl = 0.0);
+
+OPTICAL AluminiumTape;
+DEFINE_OPTICAL (
+    optical = AluminiumTape,
+    ir_emiss = 0.031,
+    ir_transm = 0.0,
+    solar_absorb = 0.14,
+    solar_transm = 0.0,
+    ir_spec_refl = 0.0,
+    solar_spec_refl = 0.0);
+
+/* End of bound variable block - no errors */
+
+/* Start of primitive block */
+
+GEOMETRY BagWater;
+BagWater = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.0075, 0.0235, -0.02],
+    radius = 0.002,
+    node_number = 567,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 47.65261200,
+    colour1 = "BLUE_CYAN",
+    colour2 = "BLUE_CYAN");
+
+BagWater = TRANSLATE (
+    object_name = BagWater,
+    x_dist = 0.04,
+    clear = TRUE);
+
+GEOMETRY bag1;
+bag1 = SHELL_SCS_BOX (
+    height = 0.01,
+    xmax = 0.038,
+    ymax = 0.031,
+    xmin = 0.0,
+    ymin = 0.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    opt1 = AluminiumTape,
+    colour1 = "LIGHT_GREY",
+    side2 = "Conductive",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "GREY_BLACK",
+    composition = "SINGLE",
+    bulk = FEP_bulk,
+    thick = 0.0001,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+bag1 = ROTATE (
+    object_name = bag1,
+    x_ang = 90.0,
+    clear = TRUE);
+
+bag1 = TRANSLATE (
+    object_name = bag1,
+    x_dist = 0.021,
+    y_dist = 0.02681,
+    z_dist = -0.04422);
+
+/* End of primitive block - no errors */
+
+/* Start of structure block */
+
+GEOMETRY tube1;
+tube1 = SOLID_PIPE_PARAMS (
+    radius = 1.5875e-03,
+    hmax = 5.0e-03,
+    thickness = 7.9375e-04,
+    hmin = 0.0,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube1 = TRANSLATE (
+    object_name = tube1,
+    x_dist = 0.03,
+    y_dist = 0.0245,
+    z_dist = -0.129,
+    clear = TRUE);
+
+GEOMETRY tube2;
+tube2 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 3.0e-03,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube2 = ROTATE (
+    object_name = tube2,
+    x_ang = -90.0,
+    y_ang = 180.0,
+    z_ang = 90.0,
+    clear = TRUE);
+
+tube2 = TRANSLATE (
+    object_name = tube2,
+    x_dist = 0.03,
+    y_dist = 0.0275,
+    z_dist = -0.124);
+
+GEOMETRY tube5;
+tube5 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 3.0e-03,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube5 = ROTATE (
+    object_name = tube5,
+    x_ang = 90.0,
+    z_ang = 90.0,
+    clear = TRUE);
+
+tube5 = TRANSLATE (
+    object_name = tube5,
+    x_dist = 0.03,
+    y_dist = 0.0275,
+    z_dist = -0.054177);
+
+GEOMETRY tube3;
+tube3 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 3.0e-03,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube3 = ROTATE (
+    object_name = tube3,
+    y_ang = 90.0,
+    clear = TRUE);
+
+tube3 = TRANSLATE (
+    object_name = tube3,
+    x_dist = 0.03,
+    y_dist = 0.0275,
+    z_dist = -0.118);
+
+GEOMETRY tube4;
+tube4 = SOLID_PIPE_PARAMS (
+    radius = 1.5875e-03,
+    hmax = 0.06382,
+    thickness = 7.9375e-04,
+    hmin = 0.0,
+    conductor_initial_mass_flow_rate = 0.0,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 4,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube4 = TRANSLATE (
+    object_name = tube4,
+    x_dist = 0.03,
+    y_dist = 0.0305,
+    z_dist = -0.118,
+    clear = TRUE);
+
+GEOMETRY tube6;
+tube6 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 3.0e-03,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube6 = ROTATE (
+    object_name = tube6,
+    x_ang = 90.0,
+    clear = TRUE);
+
+tube6 = TRANSLATE (
+    object_name = tube6,
+    x_dist = 0.0675,
+    y_dist = 0.020575,
+    z_dist = 1.82e-03);
+
+GEOMETRY tube7;
+tube7 = SOLID_PIPE_PARAMS (
+    radius = 1.5875e-03,
+    hmax = 0.05,
+    thickness = 7.9375e-04,
+    hmin = 0.0,
+    conductor_initial_mass_flow_rate = 0.0,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 4,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube7 = TRANSLATE (
+    object_name = tube7,
+    x_dist = 0.0705,
+    y_dist = 0.020575,
+    z_dist = -0.04818,
+    clear = TRUE);
+
+GEOMETRY tube8;
+tube8 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 0.003,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube8 = ROTATE (
+    object_name = tube8,
+    x_ang = 90.0,
+    y_ang = 90.0,
+    clear = TRUE);
+
+tube8 = TRANSLATE (
+    object_name = tube8,
+    x_dist = 0.0675,
+    y_dist = 0.020575,
+    z_dist = -0.04818);
+
+GEOMETRY tube9;
+tube9 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 0.003,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube9 = ROTATE (
+    object_name = tube9,
+    x_ang = 90.0,
+    y_ang = 180.0,
+    clear = TRUE);
+
+tube9 = TRANSLATE (
+    object_name = tube9,
+    x_dist = 0.0575,
+    y_dist = 0.020575,
+    z_dist = -0.04818);
+
+GEOMETRY tube10;
+tube10 = SOLID_PIPE_PARAMS (
+    radius = 1.5875e-03,
+    hmax = 0.01,
+    thickness = 7.9375e-04,
+    hmin = 0.0,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube10 = ROTATE (
+    object_name = tube10,
+    y_ang = 90.0,
+    clear = TRUE);
+
+tube10 = TRANSLATE (
+    object_name = tube10,
+    x_dist = 0.0575,
+    y_dist = 0.02057,
+    z_dist = -0.051184);
+
+GEOMETRY tube11;
+tube11 = SOLID_PIPE_PARAMS (
+    radius = 1.5875e-03,
+    hmax = 0.00604-0.00208,
+    thickness = 7.9375e-04,
+    hmin = 0.0,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube11 = TRANSLATE (
+    object_name = tube11,
+    x_dist = 0.0545,
+    y_dist = 0.02057,
+    z_dist = -0.048184,
+    clear = TRUE);
+
+GEOMETRY tube13;
+tube13 = SOLID_PIPE_PARAMS (
+    radius = 1.5875e-03,
+    hmax = 0.00604-0.00208,
+    thickness = 7.9375e-04,
+    hmin = 0.0,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube13 = ROTATE (
+    object_name = tube13,
+    z_ang = 90.0,
+    clear = TRUE);
+
+tube13 = TRANSLATE (
+    object_name = tube13,
+    x_dist = 0.03001,
+    y_dist = 0.0245,
+    z_dist = -0.048184);
+
+GEOMETRY tube12;
+tube12 = SOLID_PIPE_BEND_PARAMS (
+    major_radius = 0.003,
+    minor_radius = 1.5875e-03,
+    major_angmin = 0.0,
+    major_angmax = 90.0,
+    thickness = 7.9375e-04,
+    fluid_type = "WATER",
+    analysis_type = "Lumped Parameter",
+    bulk = PTFE_bulk,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    optical = PTFE_opt,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "MAGENTA_GREY");
+
+tube12 = ROTATE (
+    object_name = tube12,
+    x_ang = 90.0,
+    y_ang = 180.0,
+    z_ang = 90.0,
+    clear = TRUE);
+
+tube12 = TRANSLATE (
+    object_name = tube12,
+    x_dist = 0.030005,
+    y_dist = 0.0275,
+    z_dist = -0.04818);
+
+GEOMETRY TubesAndBag;
+TubesAndBag = tube1 + tube2 + tube5 + 
+    tube3 + tube4 + tube6 + tube7 + 
+    tube8 + tube9 + tube10 + tube11 + 
+    tube13 + tube12 + bag1 + BagWater;
+
+TubesAndBag = TRANSLATE (
+    object_name = TubesAndBag,
+    x_dist = -0.04,
+    clear = TRUE);
+
+GEOMETRY FluidicSystem;
+FluidicSystem = SINGLE_COMBINATION(geometry = TubesAndBag);
+
+AcubeSAT_FEB_NewNewPayload = SINGLE_COMBINATION(geometry = FluidicSystem);
+
+/* End of structure block - no errors */
+
+/* Start of conductive interface block */
+
+CONDUCTIVE_INTERFACE ci_L1;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L1,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.0, 0.01],
+    end_point = [0.038, 0.0, 0.01],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L10;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L10,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.038, 0.0, 0.0],
+    end_point = [0.038, 0.0, 0.01],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L11;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L11,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.038, 0.031, 0.0],
+    end_point = [0.038, 0.0, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L12;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L12,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.038, 0.031, 0.0],
+    end_point = [0.038, 0.031, 1.0e-02],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L13;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L13,
+    primitiveA = tube3:wall,
+    primitiveB = tube4:wall,
+    surfaceA = 4,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L14;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L14,
+    primitiveA = tube10:wall,
+    primitiveB = tube9:wall,
+    surfaceA = 3,
+    surfaceB = 4,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L15;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L15,
+    primitiveA = tube12:wall,
+    primitiveB = tube13:wall,
+    surfaceA = 3,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L16;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L16,
+    primitiveA = tube2:wall,
+    primitiveB = tube3:wall,
+    surfaceA = 4,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L17;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L17,
+    primitiveA = tube4:wall,
+    primitiveB = tube5:wall,
+    surfaceA = 4,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L18;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L18,
+    primitiveA = tube12:wall,
+    primitiveB = tube5:wall,
+    surfaceA = 4,
+    surfaceB = 4,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L19;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L19,
+    primitiveA = tube1:wall,
+    primitiveB = tube2:wall,
+    surfaceA = 4,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L2;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L2,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.038, 0.031, 1.0e-02],
+    end_point = [0.0, 0.031, 1.0e-02],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L20;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L20,
+    primitiveA = tube11:wall,
+    primitiveB = tube9:wall,
+    surfaceA = 3,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L21;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L21,
+    primitiveA = tube10:wall,
+    primitiveB = tube8:wall,
+    surfaceA = 4,
+    surfaceB = 3,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L22;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L22,
+    primitiveA = tube6:wall,
+    primitiveB = tube7:wall,
+    surfaceA = 3,
+    surfaceB = 4,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L23;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L23,
+    primitiveA = tube7:wall,
+    primitiveB = tube8:wall,
+    surfaceA = 3,
+    surfaceB = 4,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L3;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L3,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.031, 1.0e-02],
+    end_point = [0.0, 0.0, 0.01],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L4;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L4,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.0, 0.0],
+    end_point = [0.038, 0.0, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L5;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L5,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.0, 0.0],
+    end_point = [0.0, 0.0, 0.01],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L6;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L6,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.031, 0.0],
+    end_point = [0.038, 0.031, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L7;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L7,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.031, 0.0],
+    end_point = [0.0, 0.031, 1.0e-02],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L8;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L8,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.0, 0.031, 0.0],
+    end_point = [0.0, 0.0, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_L9;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_L9,
+    primitiveA = bag1,
+    primitiveB = bag1,
+    start_point = [0.038, 0.0, 0.01],
+    end_point = [0.038, 0.031, 1.0e-02],
+    connect_type = "FUSED");
+
+/* End of conductive interface block - no errors */
+
+/* Start of group block */
+
+/* End of group block - no errors */
+
+/* Start of conductor block */
+
+CONDUCTOR BagWaterGL;
+BagWaterGL = CONDUCTIVE_CONDUCTOR (
+    source_reference = "BagWater",
+    destination_reference = "bag1:face2",
+    conductor_override = 1.868);
+
+CONDUCTOR ci_K106_pipe_mf;
+ci_K106_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube1:node_N",
+    destination_reference = "tube2:node_N",
+    initial_mass_flow_rate = 0.0);
+
+CONDUCTOR ci_K107_pipe_mf;
+ci_K107_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube3:node_N",
+    destination_reference = "tube4:node_1",
+    initial_mass_flow_rate = 0.0);
+
+CONDUCTOR ci_K1_pipe_mf;
+ci_K1_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube2:node_N",
+    destination_reference = "tube3:node_N",
+    initial_mass_flow_rate = 0.0);
+
+CONDUCTOR ci_K9_pipe_mf;
+ci_K9_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube4:node_N",
+    destination_reference = "tube5:node_N",
+    initial_mass_flow_rate = 0.0);
+
+CONDUCTOR ci_L14_pipe_mf;
+ci_L14_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube10:node_N",
+    destination_reference = "tube9:node_N",
+    initial_mass_flow_rate = 0.000000);
+
+CONDUCTOR ci_L15_pipe_mf;
+ci_L15_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube12:node_N",
+    destination_reference = "tube13:node_N",
+    initial_mass_flow_rate = 0.000000);
+
+CONDUCTOR ci_L18_pipe_mf;
+ci_L18_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube12:node_N",
+    destination_reference = "tube5:node_N",
+    initial_mass_flow_rate = 0.000000);
+
+CONDUCTOR ci_L20_pipe_mf;
+ci_L20_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube11:node_N",
+    destination_reference = "tube9:node_N",
+    initial_mass_flow_rate = 0.000000);
+
+CONDUCTOR ci_L21_pipe_mf;
+ci_L21_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube10:node_N",
+    destination_reference = "tube8:node_N",
+    initial_mass_flow_rate = 0.000000);
+
+CONDUCTOR ci_L22_pipe_mf;
+ci_L22_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube6:node_N",
+    destination_reference = "tube7:node_N",
+    initial_mass_flow_rate = -0.000000);
+
+CONDUCTOR ci_L23_pipe_mf;
+ci_L23_pipe_mf = MASS_FLOW_CONDUCTOR (
+    source_reference = "tube7:node_1",
+    destination_reference = "tube8:node_N",
+    initial_mass_flow_rate = -0.000000);
+
+/* Pump_Control_to_Tube not output, at least one reference does not link to any elements in the model */
+
+/* Start of contact zone block */
+
+CONTACT_ZONE tube_to_bag1;
+tube_to_bag1 = DEFINE_CONTACT_ZONE (
+    source_reference = "tube11:wall:face4",
+    destination_reference = "bag1:face3",
+    contact_conductance = 1000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE tube_to_bag2;
+tube_to_bag2 = DEFINE_CONTACT_ZONE (
+    source_reference = "tube13:wall:face4",
+    destination_reference = "bag1:face3",
+    contact_conductance = 1000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+/* End of contact zone block - no errors */
+
