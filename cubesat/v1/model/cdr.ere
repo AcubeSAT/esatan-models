@@ -1,0 +1,4397 @@
+BEGIN_MODEL AcubeSAT__Model WORKBENCH_V1 ESARAD_GENERATED
+
+BOUNDARY_CONDITION Valves_Heater;
+Valves_Heater = TOTAL_AREA_HEAT_LOAD (
+    reference = "PCB_Valves:surface2", 
+    value = 0.3, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "PCB_Valves", 
+    measurement_method = "Average", 
+    on_temperature = 4.0, 
+    off_temperature = 10.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION Control_Valve_Heat_Sandwich;
+Control_Valve_Heat_Sandwich = TOTAL_AREA_HEAT_LOAD (
+    reference = "ControlValve_7", 
+    value = Control_Valve_Sandwich_Science);
+
+BOUNDARY_CONDITION Control_Valve_Heat_Chamber;
+Control_Valve_Heat_Chamber = TOTAL_AREA_HEAT_LOAD (
+    reference = "ControlValve_1", 
+    value = Control_Valve_Chamber_Science);
+
+BOUNDARY_CONDITION Control_Pump_Heat_Science;
+Control_Pump_Heat_Science = TOTAL_AREA_HEAT_LOAD (
+    reference = "Control_Pump", 
+    value = Control_Pump_Science);
+
+BOUNDARY_CONDITION comms_UHF_heat;
+comms_UHF_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "COMMS_PAUHF", 
+    value = COMMS_PA_UHF_Dissipation);
+
+BOUNDARY_CONDITION Sun_Sensor_Heat;
+Sun_Sensor_Heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "Sun_Sensor", 
+    value = 0.05);
+
+BOUNDARY_CONDITION EPS_heat;
+EPS_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "PCB_Batteries:surface2", 
+    value = 0.22);
+
+BOUNDARY_CONDITION Batt4_heat_cold;
+Batt4_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_4:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION Batt3_heat_cold;
+Batt3_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_3:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION Batt2_heat_cold;
+Batt2_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_2:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION Batt1_heat_cold;
+Batt1_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_1:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION comms_mcu_heat;
+comms_mcu_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "COMMS_MCU", 
+    value = COMMS_MCU_Dissipation);
+
+BOUNDARY_CONDITION Batteries_Heater_LTAN11_trial;
+Batteries_Heater_LTAN11_trial = TOTAL_AREA_HEAT_LOAD (
+    reference = "Battery_forHeatet", 
+    value = 0.55, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "Battery_3", 
+    measurement_method = "Average", 
+    on_temperature = 15.0, 
+    off_temperature = 25.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.1);
+
+BOUNDARY_CONDITION Batteries_Heater;
+Batteries_Heater = TOTAL_AREA_HEAT_LOAD (
+    reference = "Battery_forHeatet", 
+    value = 0.25, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "Battery_3", 
+    measurement_method = "Average", 
+    on_temperature = 15.0, 
+    off_temperature = 25.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.1);
+
+BOUNDARY_CONDITION Valves_Heater_trial;
+Valves_Heater_trial = TOTAL_AREA_HEAT_LOAD (
+    reference = "PCB_Valves:surface2", 
+    value = 0.1, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "PCB_Valves", 
+    measurement_method = "Average", 
+    on_temperature = 4.0, 
+    off_temperature = 10.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION Chip_Heater_trial;
+Chip_Heater_trial = TOTAL_AREA_HEAT_LOAD (
+    reference = "PDMS_Chip_forHeater", 
+    value = 0.37, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "Chip", 
+    measurement_method = "Average", 
+    on_temperature = 29.0, 
+    off_temperature = 32.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION Chip_Heater_2;
+Chip_Heater_2 = TOTAL_AREA_HEAT_LOAD (
+    reference = "PDMS_Chip_forHeater", 
+    value = 0.7, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "Chip", 
+    measurement_method = "Average", 
+    on_temperature = 29.0, 
+    off_temperature = 32.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION Chip_Heater_3;
+Chip_Heater_3 = TOTAL_AREA_HEAT_LOAD (
+    reference = "PDMS_Chip_forHeater", 
+    value = 1.0, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "Chip", 
+    measurement_method = "Average", 
+    on_temperature = 29.0, 
+    off_temperature = 32.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION Chip_Heater;
+Chip_Heater = TOTAL_AREA_HEAT_LOAD (
+    reference = "PDMS_Chip_forHeater", 
+    value = 0.5, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "Chip", 
+    measurement_method = "Average", 
+    on_temperature = 29.0, 
+    off_temperature = 32.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION obc_ram_heat;
+obc_ram_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "OBC_RAM", 
+    value = OBC_RAM_Dissipation);
+
+BOUNDARY_CONDITION obc_mcu_heat;
+obc_mcu_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "OBC_MCU", 
+    value = OBC_MCU_Dissipation);
+
+BOUNDARY_CONDITION obc_flash_heat;
+obc_flash_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "ADCS_FLASH", 
+    value = OBC_FLASH_Dissipation);
+
+BOUNDARY_CONDITION mqtr2_heat;
+mqtr2_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "MTQ2", 
+    value = MTQ_dissipation_1);
+
+BOUNDARY_CONDITION comms_Sband_heat;
+comms_Sband_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "COMMS_PASBAND", 
+    value = COMMS_PA_Sband_Dissipation);
+
+BOUNDARY_CONDITION aircore_heat;
+aircore_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "aircor", 
+    value = Aircore_dissipation);
+
+BOUNDARY_CONDITION adcs_mqtr_heat;
+adcs_mqtr_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "MTQ1", 
+    value = MTQ_dissipation_1);
+
+BOUNDARY_CONDITION adcs_mcu_heat;
+adcs_mcu_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "ADCS_MCU", 
+    value = ADCS_MCU_Dissipation);
+
+BOUNDARY_CONDITION adcs_magnetometer_heat;
+adcs_magnetometer_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "ADCS_Magnetometer", 
+    value = ADCS_Magnetometer_Dissipation);
+
+BOUNDARY_CONDITION SU_nand_nominal_heat;
+SU_nand_nominal_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "SU_NAND", 
+    value = NAND_SU_Nominal);
+
+BOUNDARY_CONDITION SU_mcu_nominal_heat;
+SU_mcu_nominal_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "SU_MCU", 
+    value = MCU_SU_Nominal);
+
+BOUNDARY_CONDITION RW_heat;
+RW_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "Cap_up:face11", 
+    value = RW_dissipation);
+
+BOUNDARY_CONDITION Batt4_heat;
+Batt4_heat = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_4:volume1", 
+    value = 0.05);
+
+BOUNDARY_CONDITION Batt3_heat;
+Batt3_heat = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_3:volume1", 
+    value = 0.05);
+
+BOUNDARY_CONDITION Batt2_heat;
+Batt2_heat = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_2:volume1", 
+    value = 0.05);
+
+BOUNDARY_CONDITION Batt1_heat;
+Batt1_heat = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_1:volume1", 
+    value = 0.05);
+
+BOUNDARY_CONDITION Flow_Pump_Heat_Science;
+Flow_Pump_Heat_Science = TOTAL_AREA_HEAT_LOAD (
+    reference = "Flow_Pump", 
+    value = Flow_Pump_Science);
+
+ANALYSIS_CASE Cold_11LTAN_Comissioning_Detumbling_500;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Comissioning_Detumbling_500.d", 
+    radiative_case = LTAN_11_Cold_500_Detumblingv1_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    boundary_condition = Control_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    boundary_condition = Control_Valve_Heat_Chamber, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    boundary_condition = Control_Valve_Heat_Sandwich, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    boundary_condition = Valves_Heater, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Comissioning_Detumbling_500, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_11LTAN_Nominal_Nadir_500;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Nominal_Nadir_500.d", 
+    radiative_case = LTAN_11_Cold_500_Nadirv1_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_11LTAN_Nominal_Nadir_500_Active;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Nominal_Nadir_500_Active.d", 
+    radiative_cases = {LTAN_11_Cold_500_Nadirv1_1, LTAN_11_Cold_500_Nadirv1_1, LTAN_11_Cold_500_Nadirv1_1, LTAN_11_Cold_500_Nadirv1_1, 
+LTAN_11_Cold_500_Nadirv1_1, LTAN_11_Cold_500_Nadirv1_1}, 
+    cycles = {1, 1, 1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_11LTAN_Nominal_Nadir_500\ACUBESAT__MODEL_COLD_11L.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batteries_Heater_LTAN11_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_Active, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      TIMEND=34300.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_11LTAN_Nominal_Nadir_500_v2;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Nominal_Nadir_500_v2.d", 
+    radiative_case = LTAN_11_Cold_500_Nadir_v2);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v2, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_11LTAN_Nominal_Nadir_500_v3;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Nominal_Nadir_500_v3.d", 
+    radiative_case = LTAN_11_Cold_500_Nadir_v2);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v3, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_11LTAN_Nominal_Nadir_500_v4;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Nominal_Nadir_500_v4.d", 
+    radiative_case = LTAN_11_Cold_500_Nadir_v2);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500_v4, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_6LTAN_Comissioning_Detumbling_500;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_6LTAN_Comissioning_Detumbling_500.d", 
+    radiative_case = LTAN_6_Cold_500_Detumbling);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_6LTAN_Comissioning_Detumbling_500, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_6LTAN_Nominal_Nadir_500;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_6LTAN_Nominal_Nadir_500.d", 
+    radiative_case = LTAN_6_Cold_500_Nadir_Pointing_v1_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_6LTAN_Nominal_Nadir_500_Active;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_6LTAN_Nominal_Nadir_500_Active.d", 
+    radiative_cases = {LTAN_6_Cold_500_Nadir_Pointing_v1_1, LTAN_6_Cold_500_Nadir_Pointing_v1_1, LTAN_6_Cold_500_Nadir_Pointing_v1_1, LTAN_6_Cold_500_Nadir_Pointing_v1_1}, 
+    cycles = {1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_6LTAN_Nominal_Nadir_500\ACUBESAT__MODEL_COLD_6LT.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Batteries_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500_Active, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      TIMEND=22700.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_6LTAN_Nominal_Nadir_500v1_1;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_6LTAN_Nominal_Nadir_500v1_1.d", 
+    radiative_case = LTAN_6_Cold_500_Nadir_Pointing_v1_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_6LTAN_Nominal_Nadir_500v1_1, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_Nominal_Glass_PEEK_Final;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Nominal_Glass_PEEK_Final.d", 
+    radiative_case = December_final);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Nominal_Glass_PEEK_Final, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_Nominal_TIME_STEP_005;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT_Model_Cold_Nominal_TIME_STEP_005.d", 
+    radiative_case = December_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Nominal_TIME_STEP_005, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.05
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Nominal_TIME_STEP_01_Final_1;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Nominal_TIME_STEP_01_Final_1.d", 
+    radiative_case = December_final);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Nominal_TIME_STEP_01_Final_1, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Cold_Nominal_TIME_STEP_RAD_10;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT_Model_Cold_Nominal_TIME_STEP_RAD_10.d", 
+    radiative_case = December_time_step_10);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Nominal_TIME_STEP_RAD_10, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Science_11LTAN_Final;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Science_11LTAN_Final, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Science_11LTAN_Final.d", 
+    radiative_cases = {LTAN_11_Cold_500_Sun_Pointingv1_1, LTAN_11_Cold_500_Sun_Pointingv1_1, LTAN_11_Cold_500_Sun_Pointingv1_1, LTAN_11_Cold_500_Sun_Pointingv1_1}, 
+    cycles = {1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_11LTAN_Nominal_Nadir_500\ACUBESAT__MODEL_COLD_11L.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Batteries_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = Valves_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Final, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Science_11LTAN_Final, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=22700.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Science_11LTAN_Finalv1_1;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Science_11LTAN_Finalv1_1.d", 
+    radiative_cases = {LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, 
+LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing}, 
+    cycles = {1, 1, 1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_11LTAN_Nominal_Nadir_500\ACUBESAT__MODEL_COLD_11L.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Batteries_Heater_LTAN11_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Chip_Heater_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = Valves_Heater_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Science_11LTAN_Finalv1_1, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=34300.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Science_11LTAN_Finalv_2;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Science_11LTAN_Finalv_2.d", 
+    radiative_cases = {LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, 
+LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing}, 
+    cycles = {1, 1, 1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_11LTAN_Nominal_Nadir_500_v3\ACUBESAT__MODEL_COLD_11L.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Batteries_Heater_LTAN11_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Chip_Heater_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = Valves_Heater_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Science_11LTAN_Finalv_2, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=34300.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Science_11LTAN_Finalv_3;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Science_11LTAN_Finalv_3.d", 
+    radiative_cases = {LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, 
+LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing}, 
+    cycles = {1, 1, 1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_11LTAN_Nominal_Nadir_500_v4\ACUBESAT__MODEL_COLD_11L.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Batteries_Heater_LTAN11_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Chip_Heater_2, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = Valves_Heater_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Science_11LTAN_Finalv_3, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=34300.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Science_11LTAN_Finalv_4;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Science_11LTAN_Finalv_4.d", 
+    radiative_cases = {LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing, 
+LTAN_11_Cold_500_Sun_Pointing, LTAN_11_Cold_500_Sun_Pointing}, 
+    cycles = {1, 1, 1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_11LTAN_Nominal_Nadir_500_v4\ACUBESAT__MODEL_COLD_11L.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Batteries_Heater_LTAN11_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Chip_Heater_3, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = Valves_Heater_trial, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Science_11LTAN_Finalv_4, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=34300.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Cold_Science_6LTAN_Final;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_Science_6LTAN_Final, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_Science_6LTAN_Final.d", 
+    radiative_cases = {LTAN_6_Cold_500_Sun_Pointing, LTAN_6_Cold_500_Sun_Pointing, LTAN_6_Cold_500_Sun_Pointing, LTAN_6_Cold_500_Sun_Pointing}, 
+    cycles = {1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Cold_6LTAN_Nominal_Nadir_500\ACUBESAT__MODEL_COLD_6LT.TMD", 
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Batteries_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Chip_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = Valves_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_Science_6LTAN_Final, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=22700.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Coldest_Nominal_TIME_STEP_01_Final;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT_Model_Coldest_Nominal_TIME_STEP_01_Final.d", 
+    radiative_case = March_Coldest_final);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Coldest_Nominal_TIME_STEP_01_Final, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+ANALYSIS_CASE Hot_6LTAN_Nominal_Nadir_600;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Hot_6LTAN_Nominal_Nadir_600.d", 
+    radiative_case = LTAN_6_Hot_600_Nadir_Pointingv1_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = Batt1_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = Batt2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = Batt3_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = Batt4_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = RW_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = SU_mcu_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = SU_nand_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = adcs_magnetometer_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = adcs_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = adcs_mqtr_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = aircore_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = comms_Sband_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = mqtr2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = obc_flash_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = obc_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    boundary_condition = obc_ram_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5801.24
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5801.24D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+");
+
+ANALYSIS_CASE Hot_Nominal_TIME_STEP_01_FINAL_3;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Hot_Nominal_TIME_STEP_01_FINAL_3.d", 
+    radiative_case = February_final_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt1_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt3_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt4_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = RW_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = SU_mcu_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = SU_nand_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = adcs_magnetometer_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = adcs_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = adcs_mqtr_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = aircore_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = comms_Sband_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = mqtr2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = obc_flash_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = obc_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    boundary_condition = obc_ram_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Hot_Nominal_TIME_STEP_01_FINAL_3, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+");
+
+ANALYSIS_CASE Hot_Science_6LTAN_600;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Hot_Science_6LTAN_600, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Hot_Science_6LTAN_600.d", 
+    radiative_cases = {LTAN_6_Hot_600_Sun_Pointingv1_1, LTAN_6_Hot_600_Sun_Pointingv1_1, LTAN_6_Hot_600_Sun_Pointingv1_1, LTAN_6_Hot_600_Sun_Pointingv1_1}, 
+    cycles = {1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Hot_6LTAN_Nominal_Nadir_600\ACUBESAT__MODEL_HOT_6LTA.TMD", 
+    initial_condition_time = 5801.24);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Batt1_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Batt2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Batt3_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Batt4_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Batteries_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Chip_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Control_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Control_Valve_Heat_Chamber, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Control_Valve_Heat_Sandwich, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Flow_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = SU_mcu_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = SU_nand_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600, 
+    boundary_condition = Valves_Heater, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Hot_Science_6LTAN_600, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Hot_Science_6LTAN_600, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=22700.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Hot_Science_6LTAN_Final;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Hot_Science_6LTAN_Final, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Hot_Science_6LTAN_Final.d", 
+    radiative_cases = {February_final_1, February_final_1, February_final_1, February_final_1}, 
+    cycles = {1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Hot_Science_TIME_STEP_01_FINAL_3\ACUBESAT__MODEL_HOT_SCIE.TMD", 
+    initial_condition_time = 5675.0);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Batt1_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Batt2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Batt3_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Batt4_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Batteries_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Chip_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Control_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Control_Valve_Heat_Chamber, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Control_Valve_Heat_Sandwich, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Flow_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = SU_mcu_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = SU_nand_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = Valves_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    boundary_condition = obc_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Final, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Hot_Science_6LTAN_Final, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=22700.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Hot_Science_6LTAN_Nadir;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Hot_Science_6LTAN_Nadir.d", 
+    radiative_cases = {LTAN_6_Hot_570_Nadir, LTAN_6_Hot_570_Nadir, LTAN_6_Hot_570_Nadir, LTAN_6_Hot_570_Nadir}, 
+    cycles = {1, 1, 1, 1}, 
+    end_point_results = {TRUE, TRUE, TRUE}, 
+    initial_condition_file = "D:\ESATAN_AGAIN\AcubeSAT__Model\esatan\Hot_6LTAN_Nominal_REAL_Nadir_570\ACUBESAT__MODEL_HOT_6LTA.TMD", 
+    initial_condition_time = 5675.0);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Batt1_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Batt2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Batt3_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Batt4_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Batteries_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Chip_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Control_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Control_Valve_Heat_Chamber, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Control_Valve_Heat_Sandwich, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Flow_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = SU_mcu_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = SU_nand_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = Valves_Heater, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = comms_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    boundary_condition = obc_mcu_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Hot_Science_6LTAN_Nadir, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "
+C
+      TIMEND=22700.0
+      OUTINT=10
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+
+
+", 
+    output_block = "      CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+");
+
+ANALYSIS_CASE Hot_Science_TIME_STEP_01_FINAL_3;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Hot_Science_TIME_STEP_01_FINAL_3.d", 
+    radiative_case = February_final_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt1_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt3_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Batt4_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Control_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Control_Valve_Heat_Chamber, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Control_Valve_Heat_Sandwich, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = Flow_Pump_Heat_Science, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = RW_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = SU_mcu_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = SU_nand_nominal_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = adcs_magnetometer_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = adcs_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = adcs_mqtr_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = aircore_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = mqtr2_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = obc_flash_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = obc_mcu_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    boundary_condition = obc_ram_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Hot_Science_TIME_STEP_01_FINAL_3, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5675
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5675D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+");
+
+END_MODEL
