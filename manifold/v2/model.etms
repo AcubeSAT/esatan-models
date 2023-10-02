@@ -1,6 +1,3 @@
-/* Fixed some CI */
-
-
 BEGIN_MODEL Manifoldv2 WORKBENCH_V1 ESARAD_GENERATED
 
 /* Start of independent variable block */
@@ -2453,9 +2450,9 @@ GROUP HM_FillFaces2 = {"Base:face9", "Base:face7", "Cylinder3:face3", "Cylinder3
 
 GROUP HM_FillFaces3 = {"Base:face11", "Base:face13", "HM_Side2:face11", "HM_Side2:face9", "Cylinder4:face5", "Cylinder4:face3", "Cylinder3:face7", "Cylinder3:face1", "HM_Side1:face3", "HM_Side1:face1", "Top:face10", "Top:face12"};
 
-GROUP MNFLD_Channels = {"Body2:face9", "FlowLayer2:face4", "FlowLayer9:face4", "FlowLayer7:face3", "Body1:face4", "Right:FlowValve1:face1", "Right:FlowValve2:face1", "Right:FlowValve3:face1", "Right:FlowValve4:face1", "FlowLayer3:face3", "Right:FlowValve4:face2", "Right:FlowValve3:face2", "Right:FlowValve2:face2", "Right:FlowValve1:face2"};
+GROUP MNFLD_Channels = {"Body2:face9", "FlowLayer2:face4", "FlowLayer9:face4", "FlowLayer7:face3", "Body1:face4", "Right:FlowValve1:face1", "Right:FlowValve2:face1", "Right:FlowValve3:face1", "Right:FlowValve4:face1", "FlowLayer3:face3"};
 
-GROUP MNFLD_Channels2 = {"FlowLayer2:face3", "Body2:face7", "FlowLayer1:face4", "FlowLayer5:face4", "FlowLayer6:face3", "Body1:face2", "FlowValve1:face1", "FlowValve1:face2", "FlowValve2:face2", "FlowValve2:face1", "FlowValve3:face1", "FlowValve3:face2", "FlowValve4:face2", "FlowValve4:face1"};
+GROUP MNFLD_Channels2 = {"FlowLayer2:face3", "Body2:face7", "FlowLayer1:face4", "FlowLayer5:face4", "FlowLayer6:face3", "Body1:face2", "FlowValve1:face1", "FlowValve2:face1", "FlowValve3:face1", "FlowValve4:face1"};
 
 GROUP RightValveHeater_Attach = {"Right_HM_Base:Cylinder4:face1", "Right_HM_Base:Cylinder1:face3", "Right_HM_Base:Cylinder1:face5", "Right_HM_Base:Cylinder4:face7", "Right_HM_Base:HM_Side1:surface2", "Right_HM_Base:HM_Side2:surface2"};
 
