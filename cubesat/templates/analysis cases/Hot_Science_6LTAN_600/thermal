@@ -1,0 +1,240 @@
+ANALYSIS_CASE Hot_Science_6LTAN_600;
+DEFINE_ANALYSIS_CASE (
+    analysis_case = Hot_Science_6LTAN_600,
+    solver = "ESATAN",
+    template_file = "Template.tpl",
+    analysis_file = "ACUBESAT_FEB_Hot_Science_6LTAN_600.d",
+    radiative_cases = {LTAN_6_Hot_600_Sun_Pointingv1_1, LTAN_6_Hot_600_Sun_Pointingv1_1, LTAN_6_Hot_600_Sun_Pointingv1_1, LTAN_6_Hot_600_Sun_Pointingv1_1},
+    cycles = {1, 1, 1, 1},
+    end_point_results = {TRUE, TRUE, TRUE},
+    initial_condition_file = "D:\ESATAN_AGAIN\ACUBESAT_FEB\esatan\Hot_6LTAN_Nominal_Nadir_600_March_2023\ACUBESAT_FEB_HOT_6LTAN_N.TMD",
+    initial_condition_time = 5801.24);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Batt1_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Batt2_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Batt3_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Batt4_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Control_Pump_Heat_Science,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = EPS_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Flow_Pump_Heat_Science,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = RW_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = SU_mcu_nominal_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = SU_nand_nominal_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Sun_Sensor_Heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = Valves_Heater,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = adcs_magnetometer_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = adcs_mcu_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = adcs_mqtr_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = aircore_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = comms_Sband_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = comms_UHF_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = mqtr2_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = obc_flash_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = obc_mcu_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_Science_6LTAN_600,
+    boundary_condition = obc_ram_heat,
+    applies = TRUE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar10vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar11vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar13vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar15vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar16vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar18vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar19vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar2vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar3vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar5vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar6vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_Science_6LTAN_600,
+    contact_zone = YRailtosolar8vol2,
+    applies = FALSE);
+
+GENERATE_TEMPLATE (
+    analysis_case = Hot_Science_6LTAN_600,
+    submodel_files = FALSE,
+    maxmin = FALSE,
+    execution_block = "
+C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+
+C
+      TIMEND=22700.0
+      OUTINT=10.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+",
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+");
+
+IMPORT_ANALYSIS_CASE_FILE(
+    analysis_case = Hot_Science_6LTAN_600,
+    source_file_path = "D:\radandthermal_Hot_Science_6LTAN_600.tpl",
+    destination_file_name = "Template.tpl");
+
+GENERATE_ANALYSIS_FILE (
+    analysis_case = Hot_Science_6LTAN_600,
+    results = "GL,REF,TRANS_HF",
+    ref_averaged = TRUE,
+    ref_cyclic = TRUE,
+    ref_mf = 1.0,
+    hf_averaged = TRUE,
+    hf_cyclic = TRUE,
+    hf_type = "S,A,P",
+    title = "ACUBESAT_FEB_Hot_Science_6LTAN_600",
+    dystor = 0,
+    environment = 99999,
+    environment_temperature = -270.0,
+    inactive = 99998,
+    area_mf = 1.0,
+    segments = FALSE,
+    acd_file = TRUE,
+    ref_deviation = 5.0e-03,
+    hf_deviation = 5.0e-03);
+
+RUN_ANALYSIS (
+    analysis_case = Hot_Science_6LTAN_600,
+    options = "PreProcess,Solve");

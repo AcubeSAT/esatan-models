@@ -1,0 +1,166 @@
+ANALYSIS_CASE Cold_11LTAN_Nominal_Nadir_500;
+DEFINE_ANALYSIS_CASE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    solver = "ESATAN", 
+    template_file = "Template.tpl", 
+    analysis_file = "AcubeSAT__Model_Cold_11LTAN_Nominal_Nadir_500.d", 
+    radiative_case = LTAN_11_Cold_500_Nadirv1_1);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt1_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt2_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt3_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Batt4_heat_cold, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = EPS_heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = Sun_Sensor_Heat, 
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    boundary_condition = comms_UHF_heat, 
+    applies = TRUE);
+
+SET_USER_DEFINED_CONDUCTOR (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    conductor = COMMSMCU, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar10vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar11vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar13vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar15vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar16vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar18vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar19vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar2vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar3vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar5vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar6vol2, 
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    contact_zone = YRailtosolar8vol2, 
+    applies = FALSE);
+
+GENERATE_TEMPLATE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    submodel_files = FALSE, 
+    maxmin = FALSE, 
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5676.98
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5676.98D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+", 
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+
+");
+
+IMPORT_ANALYSIS_CASE_FILE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500,
+    source_file_path = "D:\ESATAN_AGAIN\Acubesat_Model_December_2022\December_Rad_Thermal_Cold_11LTAN_Nominal_Nadir_500.tpl",
+    destination_file_name = "Template.tpl");
+
+GENERATE_ANALYSIS_FILE(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    ref_averaged = TRUE, 
+    ref_cyclic = TRUE, 
+    ref_mf = 1.0, 
+    hf_averaged = TRUE, 
+    hf_cyclic = TRUE, 
+    hf_type = "S,A,P", 
+    dystor = 0, 
+    environment = 99999, 
+    environment_temperature = -270.0, 
+    inactive = 99998, 
+    area_mf = 1.0, 
+    segments = FALSE, 
+    acd_file = TRUE, 
+    ref_deviation = 0.0, 
+    hf_deviation = 0.0);
+
+RUN_ANALYSIS(
+    analysis_case = Cold_11LTAN_Nominal_Nadir_500, 
+    options = "PreProcess,Solve");
