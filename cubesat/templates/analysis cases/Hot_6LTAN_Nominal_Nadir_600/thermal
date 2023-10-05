@@ -1,0 +1,227 @@
+ANALYSIS_CASE Hot_6LTAN_Nominal_Nadir_600;
+DEFINE_ANALYSIS_CASE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    solver = "ESATAN",
+    template_file = "Template.tpl",
+    analysis_file = "ACUBESAT_FEB_Hot_6LTAN_Nominal_Nadir_600.d",
+    radiative_case = LTAN_11_Cold_500_Nadirv2);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = Batt1_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = Batt2_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = Batt3_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = Batt4_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = EPS_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = RW_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = SU_mcu_nominal_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = SU_nand_nominal_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = Sun_Sensor_Heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = adcs_magnetometer_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = adcs_mcu_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = adcs_mqtr_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = aircore_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = comms_Sband_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = comms_UHF_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = comms_mcu_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = mqtr2_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = obc_flash_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = obc_mcu_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    boundary_condition = obc_ram_heat,
+    applies = TRUE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar10vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar11vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar13vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar15vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar16vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar18vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar19vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar2vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar3vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar5vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar6vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    contact_zone = YRailtosolar8vol2,
+    applies = FALSE);
+
+GENERATE_TEMPLATE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    submodel_files = FALSE,
+    maxmin = FALSE,
+    execution_block = "C
+      NLOOP=100
+      RELXCA=0.01
+      CALL SOLVFM
+C
+C
+      TIMEND=5801.24
+      OUTINT=1.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SOLCYC('SLCRNC',0.05D0,0.01D0,5801.24D0,60,' ','ALL')
+C
+      CALL SLCRNC
+C
+
+",
+    output_block = "C
+	IF(SOLVER(:2) .EQ. 'TR') THEN
+C      
+	CALL PRNDTB(' ', 'L, T, QS, QE, QA, QI, C', CURRENT)
+C
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+C
+	END IF
+");
+
+IMPORT_ANALYSIS_CASE_FILE(
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    source_file_path = "D:\radandthermal_Hot_6LTAN_Nominal_Nadir_600.tpl",
+    destination_file_name = "Template.tpl");
+
+GENERATE_ANALYSIS_FILE (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    results = "GL, TRANS_HF, REF",
+    ref_averaged = TRUE,
+    ref_cyclic = TRUE,
+    ref_mf = 1.0,
+    hf_averaged = TRUE,
+    hf_cyclic = TRUE,
+    hf_type = "S,A,P",
+    title = "ACUBESAT_FEB_Hot_6LTAN_Nominal_Nadir_600",
+    dystor = 0,
+    environment = 99999,
+    environment_temperature = -270.0,
+    inactive = 99998,
+    area_mf = 1.0,
+    segments = FALSE,
+    acd_file = TRUE,
+    ref_deviation = 0.005,
+    hf_deviation = 0.005);
+
+RUN_ANALYSIS (
+    analysis_case = Hot_6LTAN_Nominal_Nadir_600,
+    options = "PreProcess,Solve");

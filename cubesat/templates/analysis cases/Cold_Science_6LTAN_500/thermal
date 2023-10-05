@@ -1,0 +1,172 @@
+ANALYSIS_CASE Cold_Science_11LTAN;
+DEFINE_ANALYSIS_CASE (
+    analysis_case = Cold_Science_11LTAN,
+    solver = "ESATAN",
+    template_file = "Template.tpl",
+    analysis_file = "ACUBESAT_FEB_Cold_Science_11LTAN.d",
+    radiative_cases = {LTAN_11_Cold_500_Sun_Pointing_EmissiveGlass, LTAN_11_Cold_500_Sun_Pointing_EmissiveGlass, LTAN_11_Cold_500_Sun_Pointing_EmissiveGlass, LTAN_11_Cold_500_Sun_Pointing_EmissiveGlass,
+LTAN_11_Cold_500_Sun_Pointing_EmissiveGlass, LTAN_11_Cold_500_Sun_Pointing_EmissiveGlass},
+    cycles = {1, 1, 1, 1, 1, 1},
+    end_point_results = {TRUE, TRUE, TRUE, TRUE, TRUE},
+    initial_condition_file = "D:\ESATAN_AGAIN\ACUBESAT_FEB\esatan\Cold_11LTAN_Nominal_Nadir_EmissiveGlass\ACUBESAT_FEB_COLD_11LTAN.TMD",
+    initial_condition_time = 5676.98);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Batt1_heat_cold,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Batt2_heat_cold,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Batt3_heat_cold,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Batt4_heat_cold,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = EPS_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Polymide,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Sun_Sensor_Heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = Valves_Heater,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = comms_UHF_heat,
+    applies = TRUE);
+
+SET_BOUNDARY_CONDITION (
+    analysis_case = Cold_Science_11LTAN,
+    boundary_condition = comms_mcu_heat,
+    applies = TRUE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar10vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar11vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar13vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar15vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar16vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar18vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar19vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar2vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar3vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar5vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar6vol2,
+    applies = FALSE);
+
+SET_CONTACT_ZONE (
+    analysis_case = Cold_Science_11LTAN,
+    contact_zone = YRailtosolar8vol2,
+    applies = FALSE);
+
+GENERATE_TEMPLATE (
+    analysis_case = Cold_Science_11LTAN,
+    submodel_files = FALSE,
+    maxmin = FALSE,
+    execution_block = "C
+      TIMEND=34300.0
+      OUTINT=10.0
+      NLOOP=100
+      RELXCA=0.01
+      DTIMEI=0.1
+      CALL SLCRNC
+C
+",
+    output_block = "
+      CALL PRNDTB(' ', 'T, L, C, QA, QE, QI, QS', CURRENT)
+      CALL DMPTMD(' ', 'NODES, CONDUCTORS, CONSTANTS', CURRENT, ' ')
+
+
+
+");
+
+IMPORT_ANALYSIS_CASE_FILE(
+    analysis_case = Cold_Science_11LTAN,
+    source_file_path = "D:\radandthermal_Cold_Science_11LTAN.tpl",
+    destination_file_name = "Template.tpl");
+
+GENERATE_ANALYSIS_FILE (
+    analysis_case = Cold_Science_11LTAN,
+    results = "GL, REF, TRANS_HF",
+    ref_averaged = TRUE,
+    ref_cyclic = TRUE,
+    ref_mf = 1.0,
+    hf_averaged = TRUE,
+    hf_cyclic = TRUE,
+    hf_type = "S,A,P",
+    title = "ACUBESAT_FEB_Cold_Science_11LTAN",
+    dystor = 0,
+    environment = 680050,
+    environment_temperature = -270.0,
+    inactive = 680049,
+    area_mf = 1.0,
+    segments = FALSE,
+    acd_file = TRUE,
+    ref_deviation = 5.0e-3,
+    hf_deviation = 5.0e-3);
+
+RUN_ANALYSIS (
+    analysis_case = Cold_Science_11LTAN,
+    options = "PreProcess,Solve");

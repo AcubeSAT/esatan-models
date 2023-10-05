@@ -1,0 +1,146 @@
+RADIATIVE_CASE LTAN_6_Hot_600_Sun_Pointing;
+DEFINE_RADIATIVE_CASE (
+    radiative_case = LTAN_6_Hot_600_Sun_Pointing,
+    mission_type = "ORBITAL",
+    environment = TRUE);
+
+DEFINE_MISSION (
+    radiative_case = LTAN_6_Hot_600_Sun_Pointing,
+    orbit_centre = "PLANET",
+    planet_radius = 6371000.0,
+    day_period = 86400.0,
+    sun_radius = 6.958e+08,
+    sun_distance = 1.4959498e+11,
+    solar_decln = 5.452,
+    gc = 9.798,
+    sun_alpha = 12.712,
+    omega = 107.5,
+    incln = 97.6,
+    alt_p = 593029.0,
+    alt_a = 606971.0,
+    position_method = "ANGLE",
+    angle_gap = 60.0,
+    final_anomaly = 360.15277,
+    eclipse_points = FALSE,
+    orientation = "POINTING",
+    primary_vector = [1.0, 0.0, 0.0],
+    primary_direction = "NADIR",
+    second_vector = [0.0, 0.0, 1.0],
+    second_direction = "VELOCITY",
+    init_phi = roll_Sun_600_LTAN6v1_1,
+    init_psi = pitch_Sun_600_LTAN6v1_1,
+    init_omega = yaw_Sun_600_LTAN6v1_1,
+    euler_order = "phi, psi, omega",
+    spinning_craft = FALSE,
+    sun_temperature = 5778.0,
+    sun_size_finite = FALSE,
+    planet_temperature_method = "UNIFORM",
+    planet_temperature = 254.3,
+    planet_infra_red_emissivity = 1.0,
+    albedo_reflect_coeff = 0.306,
+    celestial_body_image = "Earth");
+
+DEFINE_ACCURACY (
+    radiative_case = LTAN_6_Hot_600_Sun_Pointing,
+    control_method = "FIXED_RAYS",
+    coupling_min_rays_normal = 10000,
+    coupling_min_rays_critical = 100000,
+    coupling_min_rays_non_critical = 1000,
+    hf_min_rays_normal = 10000,
+    hf_min_rays_critical = 100000,
+    hf_min_rays_non_critical = 1000,
+    ray_total_cutoff = 5.0e-03,
+    seed = 1000,
+    extinct = 1.0e-03);
+
+RADIATIVE_CASE LTAN_11_Cold_500_Nadir_Tube;
+DEFINE_RADIATIVE_CASE (
+    radiative_case = LTAN_11_Cold_500_Nadir_Tube,
+    mission_type = "ORBITAL",
+    environment = TRUE);
+
+DEFINE_MISSION (
+    radiative_case = LTAN_11_Cold_500_Nadir_Tube,
+    orbit_centre = "PLANET",
+    planet_radius = 6371000.0,
+    day_period = 86400.0,
+    sun_radius = 695800000.0,
+    sun_distance = 147957540000.0,
+    solar_decln = 22.699,
+    gc = 9.798,
+    sun_alpha = 74.644,
+    omega = 251.425,
+    incln = 97.36,
+    alt_p = 493129.0,
+    alt_a = 506871.0,
+    position_method = "TIME_GAP",
+    time_gap = 5.0017,
+    final_anomaly = 360.15277,
+    eclipse_points = FALSE,
+    orientation = "POINTING",
+    primary_vector = [1.0, 0.0, 0.0],
+    primary_direction = "NADIR",
+    second_vector = [0.0, 0.0, 1.0],
+    second_direction = "VELOCITY",
+    init_phi = yaw_Nadir_500_LTAN11v1_1,
+    init_psi = pitch_Nadir_500_LTAN11v1_1,
+    init_omega = roll_Nadir_500_LTAN11v1_1,
+    euler_order = "phi, psi, omega",
+    spinning_craft = FALSE,
+    sun_temperature = 5778.0,
+    sun_size_finite = FALSE,
+    planet_temperature_method = "UNIFORM",
+    planet_temperature = 254.3,
+    planet_infra_red_emissivity = 1.0,
+    albedo_reflect_coeff = 0.306,
+    celestial_body_image = "Earth");
+
+DEFINE_ACCURACY (
+    radiative_case = LTAN_11_Cold_500_Nadir_Tube,
+    control_method = "FIXED_RAYS",
+    coupling_min_rays_normal = 10000,
+    coupling_min_rays_critical = 100000,
+    coupling_min_rays_non_critical = 1000,
+    hf_min_rays_normal = 10000,
+    hf_min_rays_critical = 100000,
+    hf_min_rays_non_critical = 1000,
+    ray_total_cutoff = 0.005,
+    seed = 1000,
+    extinct = 0.001);
+
+GC = EVAL(LTAN_11_Cold_500_Nadir_Tube.GC);
+R_PLANET = EVAL(LTAN_11_Cold_500_Nadir_Tube.ORBIT.PLANET_RADIUS);
+R_SUN = EVAL(LTAN_11_Cold_500_Nadir_Tube.ORBIT.SUN_RADIUS);
+IF (EVAL(LTAN_11_Cold_500_Nadir_Tube.SUN_DISTANCE_OVERRIDE) == 0.0) THEN
+    SUN_PLANET_DIST = EVAL(LTAN_11_Cold_500_Nadir_Tube.ORBIT.SUN_DISTANCE);
+ELSE
+    SUN_PLANET_DIST = EVAL(LTAN_11_Cold_500_Nadir_Tube.SUN_DISTANCE_OVERRIDE);
+END_IF
+T_SUN = EVAL(LTAN_11_Cold_500_Nadir_Tube.T_SUN);
+SOLAR_DECLINATION = EVAL(LTAN_11_Cold_500_Nadir_Tube.ORBIT.SOLAR_DECLN);
+
+PROP_ENV = LTAN_11_Cold_500_Nadir_Tube.PROP_ENV;
+
+INTEGER radiative_case_error_flag1 = 0;
+CALCULATE (
+    radiative_case = LTAN_11_Cold_500_Nadir_Tube,
+    calc_types = "REF",
+    eclipse_check = FALSE,
+    error_code = radiative_case_error_flag1);
+
+IF (radiative_case_error_flag1 == 0) THEN
+FOR (orbit_index = 1;
+    orbit_index <= LTAN_11_Cold_500_Nadir_Tube.NUM_ORBIT_POSITIONS;
+    orbit_index = EVAL(orbit_index + 1))
+
+    CALCULATE (
+        radiative_case = LTAN_11_Cold_500_Nadir_Tube,
+        calc_types = "SAF, PAF, ALBEDO_PAF",
+        pos_index = orbit_index,
+        eclipse_check = TRUE,
+        error_code = radiative_case_error_flag1);
+
+END_FOR
+END_IF
+
+DELETE radiative_case_error_flag1;

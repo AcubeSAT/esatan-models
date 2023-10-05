@@ -1,0 +1,2501 @@
+/* First iteration of Analytical TMM Manifold*/
+/* To be added:*/
+/* 1. CI of bottom part of the vavles to the manifold*/
+/* 2. CI of bottom part of the vavles to water on MNFLD_Channels*/
+
+
+BEGIN_MODEL Manifoldv1 WORKBENCH_V1 ESARAD_GENERATED
+
+/* Start of independent variable block */
+
+/* --- 
+ --- */
+
+/* End of independent variable block - no errors */
+
+/* Start of geometry vectors and matrices declaration block */
+
+/* End of geometry vectors and matrices declaration block - no errors */
+
+/* Start of bound variable block */
+
+/* End of bound variable block - no errors */
+
+/* Start of primitive block */
+
+GEOMETRY Base;
+Base = SHELL_SCS_RECTANGLE (
+    xmax = 0.05272,
+    ymax = 0.0072,
+    height = 0.0,
+    xmin = 0.0,
+    ymin = 0.0,
+    sense = -1,
+    meshType1 = "positions",
+    meshPositions1 = {0.278073, 0.348255, 0.424127, 0.500000, 
+    0.581563, 0.651745, 0.721927},
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0014,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Base = TRANSLATE (
+    object_name = Base,
+    x_dist = 6.124e-03,
+    y_dist = 8.5e-04,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Body1;
+Body1 = SOLID_RECTANGLE_PARAMS (
+    xmax = 0.065,
+    ymax = 0.054,
+    height = 0.006671,
+    vector = [0.0, 0.0, 1.0],
+    xmin = 0.0,
+    ymin = 0.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.113518, 0.162778, 0.835370, 0.884444},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+GEOMETRY Body2;
+Body2 = SOLID_RECTANGLE_PARAMS (
+    xmax = 0.065,
+    ymax = 0.054,
+    height = 0.006671,
+    vector = [0.0, 0.0, 1.0],
+    xmin = 0.0,
+    ymin = 0.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.113519, 0.162778, 0.835370, 0.884444},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+Body2 = TRANSLATE (
+    object_name = Body2,
+    z_dist = -9.329e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder1;
+Cylinder1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder1 = TRANSLATE (
+    object_name = Cylinder1,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder1_cutter;
+Cylinder1_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder1_cutter = TRANSLATE (
+    object_name = Cylinder1_cutter,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder1_cutter_copy1;
+Cylinder1_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder1_cutter_copy1 = TRANSLATE (
+    object_name = Cylinder1_cutter_copy1,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder2;
+Cylinder2 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder2 = TRANSLATE (
+    object_name = Cylinder2,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder2_cutter;
+Cylinder2_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder2_cutter = TRANSLATE (
+    object_name = Cylinder2_cutter,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder2_cutter_copy1;
+Cylinder2_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder2_cutter_copy1 = TRANSLATE (
+    object_name = Cylinder2_cutter_copy1,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder3;
+Cylinder3 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder3 = TRANSLATE (
+    object_name = Cylinder3,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder3_cutter;
+Cylinder3_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder3_cutter = TRANSLATE (
+    object_name = Cylinder3_cutter,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder3_cutter_copy1;
+Cylinder3_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder3_cutter_copy1 = TRANSLATE (
+    object_name = Cylinder3_cutter_copy1,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder4;
+Cylinder4 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder4 = TRANSLATE (
+    object_name = Cylinder4,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder4_cutter;
+Cylinder4_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder4_cutter = TRANSLATE (
+    object_name = Cylinder4_cutter,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Cylinder4_cutter_copy1;
+Cylinder4_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Cylinder4_cutter_copy1 = TRANSLATE (
+    object_name = Cylinder4_cutter_copy1,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY FlowLayer1;
+FlowLayer1 = SOLID_RECTANGLE_PARAMS (
+    xmax = 0.065,
+    ymax = 0.006128,
+    height = 0.002658,
+    vector = [0.0, 0.0, 1.0],
+    xmin = 0.0,
+    ymin = 0.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowLayer1 = TRANSLATE (
+    object_name = FlowLayer1,
+    z_dist = -2.658e-03,
+    clear = TRUE);
+
+GEOMETRY FlowLayer2;
+FlowLayer2 = SOLID_RECTANGLE_PARAMS (
+    xmax = 0.065,
+    ymax = 0.03632,
+    height = 0.002658,
+    vector = [0.0, 0.0, 1.0],
+    xmin = 0.0,
+    ymin = 0.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowLayer2 = TRANSLATE (
+    object_name = FlowLayer2,
+    y_dist = 8.786e-03,
+    z_dist = -2.658e-03,
+    clear = TRUE);
+
+GEOMETRY FlowLayer3;
+FlowLayer3 = SOLID_RECTANGLE_PARAMS (
+    xmax = 0.065,
+    ymax = 0.006128+0.00011,
+    height = 0.002658,
+    vector = [0.0, 0.0, 1.0],
+    xmin = 0.0,
+    ymin = 0.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowLayer3 = TRANSLATE (
+    object_name = FlowLayer3,
+    y_dist = 0.047764,
+    z_dist = -2.658e-03,
+    clear = TRUE);
+
+GEOMETRY FlowLayer5;
+FlowLayer5 = SOLID_RECTANGLE_POINTS (
+    point1 = [0.065, 0.00879, 0.0],
+    point2 = [0.065, 0.00613, 0.0],
+    point4 = [0.065-0.0035, 0.00879, 0.0],
+    point5 = [0.065, 0.00879, -0.002658],
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+GEOMETRY FlowLayer6;
+FlowLayer6 = SOLID_RECTANGLE_POINTS (
+    point1 = [0.065, 0.00879, 0.0],
+    point2 = [0.065, 0.00613, 0.0],
+    point4 = [0.065-0.0035, 0.00879, 0.0],
+    point5 = [0.065, 0.00879, -0.002658],
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowLayer6 = TRANSLATE (
+    object_name = FlowLayer6,
+    x_dist = -0.0615,
+    clear = TRUE);
+
+GEOMETRY FlowLayer7;
+FlowLayer7 = SOLID_RECTANGLE_POINTS (
+    point1 = [0.065, 0.00879, 0.0],
+    point2 = [0.065, 0.00613, 0.0],
+    point4 = [0.065-0.0035, 0.00879, 0.0],
+    point5 = [0.065, 0.00879, -0.002658],
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowLayer7 = TRANSLATE (
+    object_name = FlowLayer7,
+    x_dist = -0.0615,
+    y_dist = 0.03898,
+    clear = TRUE);
+
+GEOMETRY FlowLayer9;
+FlowLayer9 = SOLID_RECTANGLE_POINTS (
+    point1 = [0.065, 0.00879, 0.0],
+    point2 = [0.065, 0.00613, 0.0],
+    point4 = [0.065-0.0035, 0.00879, 0.0],
+    point5 = [0.065, 0.00879, -0.002658],
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowLayer9 = TRANSLATE (
+    object_name = FlowLayer9,
+    y_dist = 0.03898,
+    clear = TRUE);
+
+GEOMETRY FlowValve1;
+FlowValve1 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowValve1 = TRANSLATE (
+    object_name = FlowValve1,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY FlowValve2;
+FlowValve2 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowValve2 = TRANSLATE (
+    object_name = FlowValve2,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY FlowValve3;
+FlowValve3 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowValve3 = TRANSLATE (
+    object_name = FlowValve3,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY FlowValve4;
+FlowValve4 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+FlowValve4 = TRANSLATE (
+    object_name = FlowValve4,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY HM_Side1;
+HM_Side1 = SHELL_RECTANGLE (
+    point1 = [0.03836, 0.00805, -0.05+0.000422],
+    point2 = [0.03836, 0.00805, -0.04158],
+    point4 = [0.01436, 0.00805, -0.05+0.000422],
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 6,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+HM_Side1 = TRANSLATE (
+    object_name = HM_Side1,
+    x_dist = 6.124e-03,
+    z_dist = 0.056248,
+    clear = TRUE);
+
+GEOMETRY HM_Side2;
+HM_Side2 = SHELL_RECTANGLE (
+    point1 = [0.01436, 0.00085, -0.05+0.000422],
+    point2 = [0.01436, 0.00085, -0.04158],
+    point4 = [0.03836, 0.00085, -0.05+0.000422],
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 6,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+HM_Side2 = TRANSLATE (
+    object_name = HM_Side2,
+    x_dist = 6.124e-03,
+    z_dist = 0.056248,
+    clear = TRUE);
+
+GEOMETRY HeaterMountFill1;
+HeaterMountFill1 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.01836, 0.00085, -0.04158],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 0.26422957137,
+    colour1 = "VERY_LIGHT_GREY",
+    colour2 = "BLUE_CYAN");
+
+HeaterMountFill1 = TRANSLATE (
+    object_name = HeaterMountFill1,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY HeaterMountFill2;
+HeaterMountFill2 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.02636, 0.00085, -0.04158],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 0.26422957137,
+    colour1 = "VERY_LIGHT_GREY",
+    colour2 = "BLUE_CYAN");
+
+HeaterMountFill2 = TRANSLATE (
+    object_name = HeaterMountFill2,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY HeaterMountFill3;
+HeaterMountFill3 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.03436, 0.00085, -0.04158],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 0.26422957137,
+    colour1 = "VERY_LIGHT_GREY",
+    colour2 = "BLUE_CYAN");
+
+HeaterMountFill3 = TRANSLATE (
+    object_name = HeaterMountFill3,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY MNFLD_ChannelWater1;
+MNFLD_ChannelWater1 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.0305, 0.046, 0.0],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 1459.02897957,
+    colour1 = "ORANGE",
+    colour2 = "BLUE_CYAN");
+
+GEOMETRY MNFLD_ChannelWater2;
+MNFLD_ChannelWater2 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.0305, 0.008, 0.0],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 1459.02897957,
+    colour1 = "ORANGE",
+    colour2 = "BLUE_CYAN");
+
+GEOMETRY Right:Base;
+Right:Base = SHELL_SCS_RECTANGLE (
+    xmax = 0.05272,
+    ymax = 0.0072,
+    height = 0.0,
+    xmin = 0.0,
+    ymin = 0.0,
+    sense = -1,
+    meshType1 = "positions",
+    meshPositions1 = {0.278073, 0.348255, 0.424127, 0.500000, 
+    0.581563, 0.651745, 0.721927},
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0014,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Base = TRANSLATE (
+    object_name = Right:Base,
+    x_dist = 6.124e-03,
+    y_dist = 8.5e-04,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder1;
+Right:Cylinder1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder1 = TRANSLATE (
+    object_name = Right:Cylinder1,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder1_cutter;
+Right:Cylinder1_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder1_cutter = TRANSLATE (
+    object_name = Right:Cylinder1_cutter,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder1_cutter_copy1;
+Right:Cylinder1_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder1_cutter_copy1 = TRANSLATE (
+    object_name = Right:Cylinder1_cutter_copy1,
+    x_dist = 0.020484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder2;
+Right:Cylinder2 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder2 = TRANSLATE (
+    object_name = Right:Cylinder2,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder2_cutter;
+Right:Cylinder2_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder2_cutter = TRANSLATE (
+    object_name = Right:Cylinder2_cutter,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder2_cutter_copy1;
+Right:Cylinder2_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder2_cutter_copy1 = TRANSLATE (
+    object_name = Right:Cylinder2_cutter_copy1,
+    x_dist = 0.028484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder3;
+Right:Cylinder3 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder3 = TRANSLATE (
+    object_name = Right:Cylinder3,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder3_cutter;
+Right:Cylinder3_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder3_cutter = TRANSLATE (
+    object_name = Right:Cylinder3_cutter,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder3_cutter_copy1;
+Right:Cylinder3_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder3_cutter_copy1 = TRANSLATE (
+    object_name = Right:Cylinder3_cutter_copy1,
+    x_dist = 0.036484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder4;
+Right:Cylinder4 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.008,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder4 = TRANSLATE (
+    object_name = Right:Cylinder4,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder4_cutter;
+Right:Cylinder4_cutter = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder4_cutter = TRANSLATE (
+    object_name = Right:Cylinder4_cutter,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = 1.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:Cylinder4_cutter_copy1;
+Right:Cylinder4_cutter_copy1 = SHELL_SCS_CYLINDER (
+    radius = 0.0036,
+    hmax = 0.01,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 4,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 1,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Cylinder4_cutter_copy1 = TRANSLATE (
+    object_name = Right:Cylinder4_cutter_copy1,
+    x_dist = 0.044484,
+    y_dist = 4.45e-03,
+    z_dist = 6.67e-03,
+    clear = TRUE);
+
+GEOMETRY Right:FlowValve1;
+Right:FlowValve1 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+Right:FlowValve1 = TRANSLATE (
+    object_name = Right:FlowValve1,
+    x_dist = 0.020484,
+    y_dist = 0.050187,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY Right:FlowValve2;
+Right:FlowValve2 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+Right:FlowValve2 = TRANSLATE (
+    object_name = Right:FlowValve2,
+    x_dist = 0.028484,
+    y_dist = 0.050187,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY Right:FlowValve3;
+Right:FlowValve3 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+Right:FlowValve3 = TRANSLATE (
+    object_name = Right:FlowValve3,
+    x_dist = 0.036484,
+    y_dist = 0.050187,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY Right:FlowValve4;
+Right:FlowValve4 = SOLID_CYLINDER_PARAMS (
+    radius = 0.0036,
+    hmax = 0.017272,
+    thickness = 0.0,
+    hmin = 0.0,
+    angmin = 0.0,
+    angmax = 360.0,
+    analysis_type = "Lumped Parameter",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "positions",
+    meshPositions2 = {0.536823},
+    meshType3 = "regular",
+    nodes3 = 1,
+    ratio3 = 1.0,
+    nbaseVolume = 0,
+    ndeltaVolume = 1,
+    activity = "Active",
+    criticality = "NORMAL",
+    colour = "BLUE_CYAN");
+
+Right:FlowValve4 = TRANSLATE (
+    object_name = Right:FlowValve4,
+    x_dist = 0.044484,
+    y_dist = 0.050187,
+    z_dist = -2.602e-03,
+    clear = TRUE);
+
+GEOMETRY Right:HM_Side1;
+Right:HM_Side1 = SHELL_RECTANGLE (
+    point1 = [0.03836, 0.00805, -0.05+0.000422],
+    point2 = [0.03836, 0.00805, -0.04158],
+    point4 = [0.01436, 0.00805, -0.05+0.000422],
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 6,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:HM_Side1 = TRANSLATE (
+    object_name = Right:HM_Side1,
+    x_dist = 6.124e-03,
+    z_dist = 0.056248,
+    clear = TRUE);
+
+GEOMETRY Right:HM_Side2;
+Right:HM_Side2 = SHELL_RECTANGLE (
+    point1 = [0.01436, 0.00085, -0.05+0.000422],
+    point2 = [0.01436, 0.00085, -0.04158],
+    point4 = [0.03836, 0.00085, -0.05+0.000422],
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 6,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.00009,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:HM_Side2 = TRANSLATE (
+    object_name = Right:HM_Side2,
+    x_dist = 6.124e-03,
+    z_dist = 0.056248,
+    clear = TRUE);
+
+GEOMETRY Right:HeaterMountFill1;
+Right:HeaterMountFill1 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.01836, 0.00085, -0.04158],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 0.26422957137,
+    colour1 = "VERY_LIGHT_GREY",
+    colour2 = "BLUE_CYAN");
+
+Right:HeaterMountFill1 = TRANSLATE (
+    object_name = Right:HeaterMountFill1,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY Right:HeaterMountFill2;
+Right:HeaterMountFill2 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.02636, 0.00085, -0.04158],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 0.26422957137,
+    colour1 = "VERY_LIGHT_GREY",
+    colour2 = "BLUE_CYAN");
+
+Right:HeaterMountFill2 = TRANSLATE (
+    object_name = Right:HeaterMountFill2,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY Right:HeaterMountFill3;
+Right:HeaterMountFill3 = NON_GEOMETRIC_THERMAL_NODE (
+    origin = [0.03436, 0.00085, -0.04158],
+    radius = 0.0005,
+    node_number = 0,
+    volume = 0.0,
+    bulk = [-10000.0, -10000.0, -10000.0],
+    capacitance_override = 0.26422957137,
+    colour1 = "VERY_LIGHT_GREY",
+    colour2 = "BLUE_CYAN");
+
+Right:HeaterMountFill3 = TRANSLATE (
+    object_name = Right:HeaterMountFill3,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY Right:Top;
+Right:Top = SHELL_RECTANGLE (
+    point1 = [0.01436, 0.00805, -0.04158],
+    point2 = [0.01436, 0.00085, -0.04158],
+    point4 = [0.03836, 0.00805, -0.04158],
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 6,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Right:Top = TRANSLATE (
+    object_name = Right:Top,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+GEOMETRY Top;
+Top = SHELL_RECTANGLE (
+    point1 = [0.01436, 0.00805, -0.04158],
+    point2 = [0.01436, 0.00085, -0.04158],
+    point4 = [0.03836, 0.00805, -0.04158],
+    sense = -1,
+    meshType1 = "regular",
+    nodes1 = 1,
+    ratio1 = 1.0,
+    meshType2 = "regular",
+    nodes2 = 6,
+    ratio2 = 1.0,
+    analysis_type = "Lumped Parameter",
+    side1 = "Active",
+    criticality1 = "NORMAL",
+    nbase1 = 0,
+    ndelta1 = 1,
+    colour1 = "BLUE_CYAN",
+    side2 = "Active",
+    criticality2 = "NORMAL",
+    nbase2 = 0,
+    ndelta2 = 1,
+    colour2 = "BLUE_CYAN",
+    composition = "SINGLE",
+    bulk = [-10000.0, -10000.0, -10000.0],
+    thick = 0.0,
+    bulk1 = [-10000.0, -10000.0, -10000.0],
+    thick1 = 0.0,
+    bulk2 = [-10000.0, -10000.0, -10000.0],
+    thick2 = 0.0,
+    through_cond = "BULK",
+    conductance = 0.0,
+    emittance = 0.0);
+
+Top = TRANSLATE (
+    object_name = Top,
+    x_dist = 6.124e-03,
+    z_dist = 0.05667,
+    clear = TRUE);
+
+/* End of primitive block - no errors */
+
+/* Start of structure block */
+
+GEOMETRY Manifold_Structure;
+Manifold_Structure = Body1 + FlowLayer3 + Body2 + 
+    FlowLayer5 + FlowLayer9 + FlowLayer7 + FlowLayer1 + 
+    FlowLayer2 + FlowLayer6;
+
+GEOMETRY Water;
+Water = MNFLD_ChannelWater1 + MNFLD_ChannelWater2;
+
+GEOMETRY HM_Base;
+HM_Base = Base -
+    Cylinder1_cutter - Cylinder2_cutter - Cylinder3_cutter - 
+    Cylinder4_cutter;
+
+GEOMETRY HM_Top;
+HM_Top = Top -
+    Cylinder1_cutter_copy1 - Cylinder2_cutter_copy1 - Cylinder3_cutter_copy1 - 
+    Cylinder4_cutter_copy1;
+
+HM_Top = TRANSLATE (
+    object_name = HM_Top,
+    z_dist = -4.22e-04,
+    clear = TRUE);
+
+GEOMETRY Left;
+Left = HM_Side1 + HM_Side2 + Cylinder1 + 
+    Cylinder4 + Cylinder2 + Cylinder3 + HM_Base + 
+    HM_Top + HeaterMountFill1 + HeaterMountFill2 + HeaterMountFill3;
+
+GEOMETRY Right:HM_Base;
+Right:HM_Base = Right:Base -
+    Right:Cylinder1_cutter - Right:Cylinder2_cutter - Right:Cylinder3_cutter - 
+    Right:Cylinder4_cutter;
+
+GEOMETRY Right:HM_Top;
+Right:HM_Top = Right:Top -
+    Right:Cylinder1_cutter_copy1 - Right:Cylinder2_cutter_copy1 - Right:Cylinder3_cutter_copy1 - 
+    Right:Cylinder4_cutter_copy1;
+
+Right:HM_Top = TRANSLATE (
+    object_name = Right:HM_Top,
+    z_dist = -4.22e-04,
+    clear = TRUE);
+
+GEOMETRY Right;
+Right = Right:HM_Side1 + Right:HM_Side2 + Right:Cylinder1 + 
+    Right:Cylinder4 + Right:Cylinder2 + Right:Cylinder3 + Right:HM_Base + 
+    Right:HM_Top + Right:HeaterMountFill1 + Right:HeaterMountFill2 + Right:HeaterMountFill3;
+
+Right = TRANSLATE (
+    object_name = Right,
+    y_dist = 0.045737,
+    clear = TRUE);
+
+GEOMETRY HeaterMount;
+HeaterMount = Left + Right;
+
+GEOMETRY FlowValves;
+FlowValves = Right:FlowValve1 + Right:FlowValve2 + Right:FlowValve3 + 
+    Right:FlowValve4 + FlowValve1 + FlowValve2 + FlowValve3 + 
+    FlowValve4;
+
+Manifoldv2 = Manifold_Structure + Water + HeaterMount + 
+    FlowValves;
+
+/* End of structure block - no errors */
+
+/* Start of conductive interface block */
+
+CONDUCTIVE_INTERFACE ci_1;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_1,
+    primitiveA = Base,
+    primitiveB = HM_Side2,
+    start_point = [0.01436, 0.0, 0.0],
+    end_point = [0.03836, 0.0, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_11;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_11,
+    primitiveA = Body1,
+    primitiveB = FlowLayer1,
+    surfaceA = 1,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_12;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_12,
+    primitiveA = Body1,
+    primitiveB = FlowLayer3,
+    surfaceA = 1,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_16;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_16,
+    primitiveA = FlowLayer2,
+    primitiveB = FlowLayer5,
+    surfaceA = 3,
+    surfaceB = 5,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_17;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_17,
+    primitiveA = FlowLayer2,
+    primitiveB = FlowLayer6,
+    surfaceA = 3,
+    surfaceB = 5,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_18;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_18,
+    primitiveA = FlowLayer2,
+    primitiveB = FlowLayer7,
+    surfaceA = 4,
+    surfaceB = 6,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_19;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_19,
+    primitiveA = FlowLayer2,
+    primitiveB = FlowLayer9,
+    surfaceA = 4,
+    surfaceB = 6,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_2;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_2,
+    primitiveA = Base,
+    primitiveB = HM_Side1,
+    start_point = [0.01436, 7.2e-03, 0.0],
+    end_point = [0.03836, 7.2e-03, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_20;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_20,
+    primitiveA = Body2,
+    primitiveB = FlowLayer3,
+    surfaceA = 2,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_21;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_21,
+    primitiveA = Body2,
+    primitiveB = FlowLayer1,
+    surfaceA = 2,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_22;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_22,
+    primitiveA = Body2,
+    primitiveB = FlowLayer2,
+    surfaceA = 2,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_27;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_27,
+    primitiveA = FlowLayer1,
+    primitiveB = FlowLayer6,
+    surfaceA = 4,
+    surfaceB = 6,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_28;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_28,
+    primitiveA = FlowLayer1,
+    primitiveB = FlowLayer5,
+    surfaceA = 4,
+    surfaceB = 6,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_29;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_29,
+    primitiveA = FlowLayer3,
+    primitiveB = FlowLayer7,
+    surfaceA = 3,
+    surfaceB = 5,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_3;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_3,
+    primitiveA = Right:Base,
+    primitiveB = Right:HM_Side2,
+    start_point = [0.01436, 0.0, 0.0],
+    end_point = [0.03836, 0.0, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_30;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_30,
+    primitiveA = FlowLayer3,
+    primitiveB = FlowLayer9,
+    surfaceA = 3,
+    surfaceB = 5,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_31;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_31,
+    primitiveA = FlowLayer6,
+    primitiveB = Body2,
+    surfaceA = 2,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_32;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_32,
+    primitiveA = FlowLayer7,
+    primitiveB = Body2,
+    surfaceA = 2,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_33;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_33,
+    primitiveA = FlowLayer9,
+    primitiveB = Body2,
+    surfaceA = 2,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_34;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_34,
+    primitiveA = FlowLayer5,
+    primitiveB = Body2,
+    surfaceA = 2,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_35;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_35,
+    primitiveA = FlowLayer9,
+    primitiveB = Body1,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_36;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_36,
+    primitiveA = FlowLayer7,
+    primitiveB = Body1,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_37;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_37,
+    primitiveA = FlowLayer5,
+    primitiveB = Body1,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_38;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_38,
+    primitiveA = FlowLayer6,
+    primitiveB = Body1,
+    surfaceA = 1,
+    surfaceB = 1,
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_4;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_4,
+    primitiveA = Right:Base,
+    primitiveB = Right:HM_Side1,
+    start_point = [0.01436, 7.2e-03, 0.0],
+    end_point = [0.03836, 7.2e-03, 0.0],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_5;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_5,
+    primitiveA = HM_Side1,
+    primitiveB = Top,
+    start_point = [0.03836, 8.05e-03, -0.04158],
+    end_point = [0.01436, 8.05e-03, -0.04158],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_6;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_6,
+    primitiveA = Right:HM_Side1,
+    primitiveB = Right:Top,
+    start_point = [0.03836, 8.05e-03, -0.04158],
+    end_point = [0.01436, 8.05e-03, -0.04158],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_7;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_7,
+    primitiveA = HM_Side2,
+    primitiveB = Top,
+    start_point = [0.01436, 8.5e-04, -0.04158],
+    end_point = [0.03836, 8.5e-04, -0.04158],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_8;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_8,
+    primitiveA = Right:HM_Side2,
+    primitiveB = Right:Top,
+    start_point = [0.01436, 8.5e-04, -0.04158],
+    end_point = [0.03836, 8.5e-04, -0.04158],
+    connect_type = "FUSED");
+
+CONDUCTIVE_INTERFACE ci_9;
+DEFINE_CONDUCTIVE_INTERFACE (
+    conductive_interface = ci_9,
+    primitiveA = Body1,
+    primitiveB = FlowLayer2,
+    surfaceA = 1,
+    surfaceB = 2,
+    connect_type = "FUSED");
+
+/* End of conductive interface block - no errors */
+
+/* Start of group block */
+
+GROUP HM_FillFaces1 = {"Cylinder2:face3", "Cylinder1:face7", "Cylinder1:face1", "HM_Side2:face1", "HM_Side2:face3", "Cylinder2:face5", "HM_Side1:face9", "HM_Side1:face11", "Base:face5", "Base:face3", "Top:face4", "Top:face2"};
+
+GROUP HM_FillFaces2 = {"Base:face9", "Base:face7", "Cylinder3:face3", "Cylinder3:face5", "Cylinder2:face7", "Cylinder2:face1", "HM_Side2:face7", "HM_Side2:face5", "HM_Side1:face5", "HM_Side1:face7", "Top:face6", "Top:face8"};
+
+GROUP HM_FillFaces3 = {"Base:face11", "Base:face13", "HM_Side2:face11", "HM_Side2:face9", "Cylinder4:face5", "Cylinder4:face3", "Cylinder3:face7", "Cylinder3:face1", "HM_Side1:face3", "HM_Side1:face1", "Top:face10", "Top:face12"};
+
+GROUP MNFLD_Channels = {"Body2:face9", "FlowLayer2:face4", "FlowLayer9:face4", "FlowLayer7:face3", "Body1:face4", "Right:FlowValve1:face1", "Right:FlowValve2:face1", "Right:FlowValve3:face1", "Right:FlowValve4:face1", "FlowLayer3:face3", "Right:FlowValve4:face2", "Right:FlowValve3:face2", "Right:FlowValve2:face2", "Right:FlowValve1:face2"};
+
+GROUP MNFLD_Channels2 = {"FlowLayer2:face3", "Body2:face7", "FlowLayer1:face4", "FlowLayer5:face4", "FlowLayer6:face3", "Body1:face2", "FlowValve1:face1", "FlowValve1:face2", "FlowValve2:face2", "FlowValve2:face1", "FlowValve3:face1", "FlowValve3:face2", "FlowValve4:face2", "FlowValve4:face1"};
+
+GROUP Right_HM_FillFaces1 = {"Right:Cylinder2:face3", "Right:Cylinder1:face1", "Right:Cylinder2:face5", "Right:Cylinder1:face7", "Right:Top:face2", "Right:Top:face4", "Right:HM_Side1:face9", "Right:HM_Side1:face11", "Right:HM_Side2:face3", "Right:HM_Side2:face1", "Right:Base:face5", "Right:Base:face3"};
+
+GROUP Right_HM_FillFaces2 = {"Right:Top:face8", "Right:HM_Side1:face5", "Right:HM_Side1:face7", "Right:Top:face6", "Right:Cylinder2:face1", "Right:Cylinder3:face5", "Right:Cylinder2:face7", "Right:HM_Side2:face5", "Right:HM_Side2:face7", "Right:Cylinder3:face3", "Right:Base:face9", "Right:Base:face7"};
+
+GROUP Right_HM_FillFaces3 = {"Right:Top:face10", "Right:HM_Side1:face1", "Right:HM_Side1:face3", "Right:Cylinder4:face3", "Right:Cylinder4:face5", "Right:Cylinder3:face1", "Right:Cylinder3:face7", "Right:HM_Side2:face9", "Right:HM_Side2:face11", "Right:Top:face12", "Right:Base:face13", "Right:Base:face11"};
+
+/* End of group block - no errors */
+
+/* Start of conductor block */
+
+CONDUCTOR HM_Fill1_UDC;
+HM_Fill1_UDC = CONDUCTIVE_CONDUCTOR (
+    source_reference = "HeaterMountFill1",
+    destination_reference = "HM_FillFaces1",
+    conductor_override = 167.0);
+
+CONDUCTOR HM_Fill2_UDC;
+HM_Fill2_UDC = CONDUCTIVE_CONDUCTOR (
+    source_reference = "HeaterMountFill2",
+    destination_reference = "HM_FillFaces2",
+    conductor_override = 167.0);
+
+CONDUCTOR HM_Fill3_UDC;
+HM_Fill3_UDC = CONDUCTIVE_CONDUCTOR (
+    source_reference = "HeaterMountFill3",
+    destination_reference = "HM_FillFaces3",
+    conductor_override = 167.0);
+
+CONDUCTOR MNFLD_Water_UDC1;
+MNFLD_Water_UDC1 = CONDUCTIVE_CONDUCTOR (
+    source_reference = "MNFLD_ChannelWater1",
+    destination_reference = "MNFLD_Channels",
+    conductor_override = 500.0*0.000283395);
+
+CONDUCTOR MNFLD_Water_UDC2;
+MNFLD_Water_UDC2 = CONDUCTIVE_CONDUCTOR (
+    source_reference = "MNFLD_ChannelWater2",
+    destination_reference = "MNFLD_Channels2",
+    conductor_override = 500.0*0.000283395);
+
+CONDUCTOR Right_HM_Fill1_UDC;
+Right_HM_Fill1_UDC = CONDUCTIVE_CONDUCTOR (
+    source_reference = "Right:HeaterMountFill1",
+    destination_reference = "Right_HM_FillFaces1",
+    conductor_override = 167.0);
+
+CONDUCTOR Right_HM_Fill2_UDC;
+Right_HM_Fill2_UDC = CONDUCTIVE_CONDUCTOR (
+    source_reference = "Right:HeaterMountFill2",
+    destination_reference = "Right_HM_FillFaces2",
+    conductor_override = 167.0);
+
+CONDUCTOR Right_HM_Fill3_UDC;
+Right_HM_Fill3_UDC = CONDUCTIVE_CONDUCTOR (
+    source_reference = "Right:HeaterMountFill3",
+    destination_reference = "Right_HM_FillFaces3",
+    conductor_override = 167.0);
+
+/* End of conductor block - no errors */
+
+/* Start of contact zone block */
+
+CONTACT_ZONE FV_HM1;
+FV_HM1 = DEFINE_CONTACT_ZONE (
+    source_reference = "FlowValve1:surface1",
+    destination_reference = "Cylinder1:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE FV_HM2;
+FV_HM2 = DEFINE_CONTACT_ZONE (
+    source_reference = "FlowValve2:surface1",
+    destination_reference = "Cylinder2:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE FV_HM3;
+FV_HM3 = DEFINE_CONTACT_ZONE (
+    source_reference = "FlowValve3:surface1",
+    destination_reference = "Cylinder3:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE FV_HM4;
+FV_HM4 = DEFINE_CONTACT_ZONE (
+    source_reference = "FlowValve4:surface1",
+    destination_reference = "Cylinder4:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE HM_MANIFOLD;
+HM_MANIFOLD = DEFINE_CONTACT_ZONE (
+    source_reference = "Base:surface2",
+    destination_reference = "Body1:face2",
+    contact_conductance = 1000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE Right_FV_HM1;
+Right_FV_HM1 = DEFINE_CONTACT_ZONE (
+    source_reference = "Right:FlowValve1:surface1",
+    destination_reference = "Right:Cylinder1:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE Right_FV_HM2;
+Right_FV_HM2 = DEFINE_CONTACT_ZONE (
+    source_reference = "Right:FlowValve2:surface1",
+    destination_reference = "Right:Cylinder2:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE Right_FV_HM3;
+Right_FV_HM3 = DEFINE_CONTACT_ZONE (
+    source_reference = "Right:FlowValve3:surface1",
+    destination_reference = "Right:Cylinder3:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+CONTACT_ZONE Right_FV_HM4;
+Right_FV_HM4 = DEFINE_CONTACT_ZONE (
+    source_reference = "Right:FlowValve4:surface1",
+    destination_reference = "Right:Cylinder4:surface2",
+    contact_conductance = 10000.0,
+    maximum_gap = 0.01,
+    number_sample_points = 10000);
+
+/* End of contact zone block - no errors */
+
+END_MODEL

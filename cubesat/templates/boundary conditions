@@ -1,0 +1,64 @@
+/* These are the boundary conditions that are basically considered standard and should be imported as-is to the model. They mostly pertain to PCB heatloads, Magnetorquers etc */
+
+BOUNDARY_CONDITION Valves_Heater;
+Valves_Heater = TOTAL_AREA_HEAT_LOAD (
+    reference = "PCB_Valves:surface2", 
+    value = 0.3, 
+    heater_control_method = "Thermostat", 
+    thermostat_ref = "PCB_Valves", 
+    measurement_method = "Average", 
+    on_temperature = 4.0, 
+    off_temperature = 10.0, 
+    mode_transient = "Proportional", 
+    mode_steady_state = "Proportional", 
+    load_damping_ss = 0.01);
+
+BOUNDARY_CONDITION Control_Valve_Heat_Sandwich;
+Control_Valve_Heat_Sandwich = TOTAL_AREA_HEAT_LOAD (
+    reference = "ControlValve_7", 
+    value = 0.0);
+
+BOUNDARY_CONDITION Control_Valve_Heat_Chamber;
+Control_Valve_Heat_Chamber = TOTAL_AREA_HEAT_LOAD (
+    reference = "ControlValve_1", 
+    value = 0.0);
+
+BOUNDARY_CONDITION Control_Pump_Heat_Science;
+Control_Pump_Heat_Science = TOTAL_AREA_HEAT_LOAD (
+    reference = "Control_Pump", 
+    value = 0.0);
+
+BOUNDARY_CONDITION comms_UHF_heat;
+comms_UHF_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "COMMS_PAUHF", 
+    value = 0.0);
+
+BOUNDARY_CONDITION Sun_Sensor_Heat;
+Sun_Sensor_Heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "Sun_Sensor", 
+    value = 0.05);
+
+BOUNDARY_CONDITION EPS_heat;
+EPS_heat = TOTAL_AREA_HEAT_LOAD (
+    reference = "PCB_Batteries:surface2", 
+    value = 0.22);
+
+BOUNDARY_CONDITION Batt4_heat_cold;
+Batt4_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_4:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION Batt3_heat_cold;
+Batt3_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_3:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION Batt2_heat_cold;
+Batt2_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_2:volume1", 
+    value = 0.02);
+
+BOUNDARY_CONDITION Batt1_heat_cold;
+Batt1_heat_cold = TOTAL_VOLUME_HEAT_LOAD (
+    reference = "Battery_1:volume1", 
+    value = 0.02);
